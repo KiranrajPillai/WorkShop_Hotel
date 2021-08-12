@@ -1,11 +1,4 @@
 package com.HotelManagement;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -13,7 +6,7 @@ public class HotelProgram {
 
     private static boolean MainMenu = true;
     private static boolean SubMenu = true;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         Room[] myHotel = new Room[10];
         myHotel[0] = new Room();
@@ -30,15 +23,15 @@ public class HotelProgram {
         initialise(myHotel);
         while (MainMenu) {
             while (SubMenu) {
-                System.out.println("Hello and Welcome to our Hotel Program\nPlease keep hands and feet in the vehicle at all time.");
-                System.out.println("Please select one of the options.");
-                System.out.println("A: Book A New Room.");
-                System.out.println("E: Display Empty Rooms.");
-                System.out.println("V: View all Rooms.");
+                System.out.println("Welcome to our TAJ MAHAL HOTEl");
+                System.out.println("Select a option from the given option below");
+                System.out.println("A: Book a Room in an Hotel");
+                System.out.println("E: Display all the empty room available for booking");
+                System.out.println("V: View all the rooms available for booking ");
                 System.out.println("D: Delete customer from room.");
                 System.out.println("F: Find room from customer name.");
-                System.out.println("S: Store program data in to file.");
-                System.out.println("L: Load program data from file.");
+                //System.out.println("S: Store program data in to file.");
+                //System.out.println("L: Load program data from file.");
                 System.out.println("O: View rooms Ordered alphabetically by name.");
                 String Selection = input.next();
                 Selection = Selection.toUpperCase();
@@ -57,12 +50,6 @@ public class HotelProgram {
                         break;
                     case "F":
                         FindRoomFromCustomerName(myHotel);
-                        break;
-                    case "S":
-                        StoreProgramDataInToFile(myHotel);
-                        break;
-                    case "L":
-                        LoadProgramDataFromFile(myHotel);
                         break;
                     case "O":
                         ViewRoomsOrderedAlphabeticallyByName(myHotel);
@@ -147,25 +134,6 @@ public class HotelProgram {
         }
     }
 
-    private static void StoreProgramDataInToFile(Room[] myHotel) throws IOException {
-        try (PrintWriter out = new PrintWriter(new FileWriter("/home/unix/student12/w1387769/outputfile.txt"))) {
-            int x;
-            for (x = 0; x < myHotel.length; x++) {
-                out.println("Name and Room number is: " + myHotel[x].getName() + "at: " + x);
-            }
-
-        }
-        System.out.println("All Room Names have been Saved.");
-    }
-
-    private static void LoadProgramDataFromFile(Room[] myHotel) throws IOException {
-        FileInputStream fs = new FileInputStream("/home/unix/student12/w1387769/inputfile.txt");
-        BufferedReader br = new BufferedReader(new InputStreamReader(fs));
-        for (int i = 0; i < myHotel.length; i++) {
-            myHotel[i].setName(br.readLine());
-        }
-    }
-
     private static void ViewRoomsOrderedAlphabeticallyByName(Room[] myHotel) {
         String[] myStrArray = new String[myHotel.length];
         for (int i = 0; i < myHotel.length; i++) {
@@ -187,11 +155,9 @@ public class HotelProgram {
             mainName = "k";
 
         }
-        
         public String getName() {
             return mainName;
         }
-
         public void setName(String nobody) {
         }
     }
